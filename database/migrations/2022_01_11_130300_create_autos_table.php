@@ -22,6 +22,9 @@ class CreateAutosTable extends Migration
             $table->integer('km_auto')->comment('Пробег');
             $table->string('color')->comment('Цвет');
             $table->softDeletes();
+
+            //$table->foreign('tech_support_id')->references('id')->on('tech_supports')->onDelete('cascade');
+            //$table->foreignIdFor('user_id')->nullable()->references('id')->on('users')->onDelete('cascade');
         });
     }
 

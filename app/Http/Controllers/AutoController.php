@@ -30,7 +30,6 @@ class AutoController extends Controller
             'color' => 'required',
         ]);
         Auto::create($data);
-
         return redirect('/');
     }
     public function edit(Auto $auto) {

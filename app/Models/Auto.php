@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -23,18 +22,21 @@ class Auto extends Model
         'km_auto',
         'date_auto',
         'color',
+        'user_id',
         ];
     /**
      * @var mixed
      */
     private $user_id;
-
     protected static function booted() {
         static::created(function ($auto) {
             $auto->user_id = Auth::user()->id;
         });
     }
     public function user() {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class);
+    }
+    public function techSupport() {
+        return $this->belongsTo(TechSupport::class);
     }
 }

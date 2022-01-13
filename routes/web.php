@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AutoController;
+use App\Http\Controllers\TechSuppController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,8 +13,6 @@ use App\Http\Controllers\AutoController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
 Route::middleware('auth')->group(function () {
     Route::get('/', [AutoController::class, 'index' ])->name('autos');
     Route::get('/autos/create', [AutoController::class, 'create' ])->name('create');
@@ -27,6 +26,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/techSupport', [TechSuppController::class, 'techSupports'])->name('techSupports');
+    Route::get('/techs/create', [TechSuppController::class, 'techCreate' ])->name('techCreate');
+    Route::post('/techs', [TechSuppController::class, 'techStore']);
+    Route::get('/techs/{tech}', [TechSuppController::class, 'techShow'])->name('techShow');
+    Route::get('/techs/{tech}/edit', [TechSuppController::class, 'techEdit'])->name('techEdit');
+    Route::patch('/techs/{tech}', [TechSuppController::class, 'techUpdate'])->name('tech_update');
+    Route::delete('/techs/{tech}', [TechSuppController::class, 'techDestroy']);
 });
 
 require __DIR__.'/auth.php';

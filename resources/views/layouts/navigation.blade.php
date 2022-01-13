@@ -20,6 +20,14 @@
                         {{ __('Добавление авто') }}
                     </x-nav-link>
 
+                    <x-nav-link :href="route('techSupports')" :active="request()->routeIs('techSupports')">
+                        {{ __('Техничский осмотр') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('techCreate')" :active="request()->routeIs('techCreate')">
+                        {{ __('Добавление TO') }}
+                    </x-nav-link>
+
                     <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
                         {{ __('О нас') }}
                     </x-nav-link>
